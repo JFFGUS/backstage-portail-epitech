@@ -12,6 +12,11 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
+  reading:
+    allow:
+  #    - host: raw.githubusercontent.com
+      - host: github.com
+        token: ${GITHUB_TOKEN}
   baseUrl: http://localhost:7007
   listen:
     port: 7007
@@ -35,13 +40,17 @@ backend:
 integrations:
   github:
     - host: github.com
-      # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
-      # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
-      token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
-    # - host: ghe.example.net
-    #   apiBaseUrl: https://ghe.example.net/api/v3
-    #   token: ${GHE_TOKEN}
+      # 👉 Ce token est un GitHub Personal Access Token (PAT).
+      # 👉 Pour le générer : https://github.com/settings/tokens
+      # 👉 Permissions recommandées : repo, read:org
+      token: ${GITHUB_TOKEN}  # Défini dans ton .env ou ta variable d’environnement
+
+  # 🟨 GitLab – Exemple à compléter dès que tu as accès
+  # gitlab:
+  #   - host: git-x.is.toto.net
+  #     baseUrl: https://git-x.is.toto.net
+  #     apiBaseUrl: https://git-x.is.toto.net/api/
+  #     token: ${GITLAB_EPITECH_TOKEN}
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -80,17 +89,17 @@ catalog:
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
-      target: ../../examples/entities.yaml
+      target: ../../ressources/entities.yaml
 
     # Local example template
     - type: file
-      target: ../../examples/template/template.yaml
+      target: ../../ressources/template/template.yaml
       rules:
         - allow: [Template]
 
     # Local example organizational data
     - type: file
-      target: ../../examples/org.yaml
+      target: ../../ressources/org.yaml
       rules:
         - allow: [User, Group]
 

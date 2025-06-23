@@ -1,0 +1,62 @@
+---
+# Système global de démonstration pour Epitech
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: epitech-demo-system
+  description: Système de démonstration pour les projets Epitech
+spec:
+  owner: epitech
+
+---
+# Composant front-end géré par l’équipe Ingénierie Logicielle
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: demo-front-app
+  description: Application front-end de démonstration
+spec:
+  type: website
+  lifecycle: experimental
+  owner: ingenierie-logicielle
+  system: epitech-demo-system
+  providesApis: [demo-public-api]
+
+---
+# Composant back-end géré par l’équipe Cybersécurité
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: demo-back-service
+  description: Service back-end de démonstration
+spec:
+  type: service
+  lifecycle: experimental
+  owner: cybersecurite
+  system: epitech-demo-system
+  providesApis: [demo-public-api]
+
+---
+# API publique gérée par l’équipe Data & IA
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: demo-public-api
+  description: API de démonstration exposée aux applications front-end
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: data-ia
+  system: epitech-demo-system
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Demo Public API
+      version: 1.0.0
+    paths:
+      /ping:
+        get:
+          summary: Health check
+          responses:
+            '200':
+              description: OK
