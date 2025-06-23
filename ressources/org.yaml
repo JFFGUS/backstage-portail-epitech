@@ -1,0 +1,59 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: epitech
+  description: Epitech, la grande école d’informatique
+spec:
+  type: business-unit
+  profile:
+    displayName: Epitech
+  children:
+    - data-ia
+    - cybersecurite
+    - ingenierie-logicielle
+  members: [] # TODO: à définir
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: data-ia
+  description: Spécialité Data & Intelligence Artificielle
+spec:
+  type: team
+  parent: epitech
+  profile:
+    displayName: Data & IA
+  children: []
+  members: [] # TODO: à définir
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: cybersecurite
+  description: Spécialité Cybersécurité
+spec:
+  type: team
+  parent: epitech
+  profile:
+    displayName: Cybersécurité
+  children: []
+  members: [] # TODO: à définir
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: ingenierie-logicielle
+  description: Spécialité Ingénierie Logicielle
+spec:
+  type: team
+  parent: epitech
+  profile:
+    displayName: Ingénierie Logicielle
+  children: []
+  members: [] # TODO: à définir
